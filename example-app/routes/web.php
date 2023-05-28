@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Models\CategoryModel;
+use App\Models\ProductModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('detail');
 });
-Route::get('/home', function () {
-    return view('index');
-});
+Route::get('/home',[ProductController::class,'getAllProductAndPagination']);
+Route::get('/main',[CategoryController::class,'getAllCategory2']);
+Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
