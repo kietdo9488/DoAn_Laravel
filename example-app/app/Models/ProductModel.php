@@ -11,4 +11,10 @@ class ProductModel extends Model
     public $timestamp = true;
     protected $primaryKey = 'id';
     public $incrementing = true;
+
+    public static function getProductsBySearchKeyword($keyword){
+        $result = self::where('product_name', 'like', '%'.$keyword.'%' )->get();
+
+        return $result;
+    }
 }

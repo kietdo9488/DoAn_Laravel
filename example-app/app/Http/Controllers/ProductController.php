@@ -18,4 +18,18 @@ class ProductController extends Controller
 
         return view('index', compact('products'))->with('i',(request()->input('page', 1) -1) * 8);
     }
+
+    public function searchByKeywords(Request $request){
+        $search = $request->search;
+        $resultSearch = ProductModel::getProductsBySearchKeyword($search);
+        if($search == ""){
+            $resultSearch = ProductModel::all()->sortByDesc('id');
+        }
+        return view('searchresult',['searchResults' => $resultSearch]);$search = $request->search;
+        $resultSearch = ProductModel::getProductsBySearchKeyword($search);
+        if($search == ""){
+            $resultSearch = ProductModel::all()->sortByDesc('id');
+        }
+        return view('searchresult',['searchResults' => $resultSearch]);
+    }
 }
