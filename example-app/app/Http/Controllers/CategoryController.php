@@ -11,4 +11,11 @@ class CategoryController extends Controller
     {
         return CategoryModel::all();
     }
+
+    public function getAllCategory2(Request $request)
+    {
+        $categories = CategoryModel::all();
+
+        return view('main')->with(compact('categories'));
+    }
 }

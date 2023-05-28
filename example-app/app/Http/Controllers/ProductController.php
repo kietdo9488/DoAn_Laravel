@@ -14,7 +14,7 @@ class ProductController extends Controller
 
     public function getAllProductAndPagination(Request $request)
     {
-        $products = ProductModel::paginate(8);
+        $products = ProductModel::paginate(8); 
 
         return view('index', compact('products'))->with('i',(request()->input('page', 1) -1) * 8);
     }
