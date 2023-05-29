@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryModel extends Model
 {
     protected $table = 'categories';
-    public $timestamp = true;
+    public $timestamps = false;
     protected $primaryKey = 'id';
     public $incrementing = true;
 }
