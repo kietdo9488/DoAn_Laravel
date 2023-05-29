@@ -4,11 +4,11 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Search Result</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
 
-            @foreach ($products as $product)
+            @foreach ($searchResults as $product)
                 <tr>
                     <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                         <div class="card product-item border-0 mb-4">
@@ -33,6 +33,5 @@
                     </div>
                 </tr>
             @endforeach
-            {{ $products->links('pagination::bootstrap-5') }}
     <!-- Products End -->
 @endsection
