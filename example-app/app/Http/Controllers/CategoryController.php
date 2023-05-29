@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function getAllCategory(Request $request)
+    public static function getAllCategory()
     {
         return CategoryModel::all();
     }
 
-    public function getAllCategory2(Request $request)
+    public static function getAllCategory2()
     {
         $categories = CategoryModel::all();
 
-        return view('main')->with(compact('categories'));
+        return view('main', ['categories'=>$categories]);
     }
 }

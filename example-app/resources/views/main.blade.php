@@ -105,9 +105,9 @@
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        {{-- @foreach ($categories as $category)
-                        <a href="" class="nav-item nav-link">{{$category->category_name}}</a>
-                        @endforeach --}}
+                        @foreach ($categories as $item)
+                        <a href="" class="nav-item nav-link">{{$item->category_name}}</a>
+                        @endforeach
                     </div>
                 </nav>
             </div>
