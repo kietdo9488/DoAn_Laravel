@@ -34,4 +34,4 @@
                 </tr>
             @endforeach
     <!-- Products End -->
-@endsection
+    @endsection

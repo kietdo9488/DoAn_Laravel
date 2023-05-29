@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('detail');
+    return view('home');
 });
-Route::get('/home',[ProductController::class,'getAllProductAndPagination']);
+Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->name('home');
+Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
 
@@ -36,3 +37,6 @@ Route::get('/editproduct', [ProductController::class, 'getProductById'])->name('
 Route::post('/editproduct', [ProductController::class, 'getUpdateProductById'])->name('update');
 //Xoa san pham
 Route::DELETE('/manageproduct', [ProductController::class, 'delete'])->name('delete-product');
+
+
+Route::get('/detail', [ProductController::class, 'getDetail'])->name('detail-product');
