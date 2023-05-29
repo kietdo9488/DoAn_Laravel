@@ -162,4 +162,14 @@ class ProductController extends Controller
     {
         return view('addproduct');
     }
+
+    public function getProductByCategory(Request $request)
+    {
+        $productList = ProductModel::where('idcategory', '=', $request->id)->get();
+        // dd($productList);
+
+        $categories = CategoryController::getAllCategory();
+
+        return view('category', ['productList'=>$productList, 'categories'=>$categories]);
+    }
 }

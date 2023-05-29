@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('detail');
 });
 Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->name('home');
+Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
 
