@@ -43,4 +43,9 @@ class ProductController extends Controller
         
         return view('searchresult',['searchResults' => $resultSearch, 'categories'=>$categories]);
     }
+
+    public function getProductByCategory(Request $Request) {
+        ProductModel::where('id', '=', $Request->id)->delete();
+        return redirect("manageproduct");
+    }
 }
