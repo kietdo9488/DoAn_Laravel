@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    public $timestamp = true;
+    public $timestamps = false;
     protected $primaryKey = 'id';
     public $incrementing = true;
+
 
     public static function getProductsBySearchKeyword($keyword){
         $result = self::where('product_name', 'like', '%'.$keyword.'%' )->get();
