@@ -44,7 +44,7 @@ class ProductController extends Controller
         return view('searchresult',['searchResults' => $resultSearch, 'categories'=>$categories]);
     }
     //Lay tat ca product
-    public function getAllProduct(Request $request)
+    public function getAllProduct()
     {
         $productList = ProductModel::paginate(5);
         return view('manageproduct', ['productList' => $productList]);
@@ -140,6 +140,17 @@ class ProductController extends Controller
             );
         }
         return redirect('manageproduct')->withSuccess('Login details are not valid');
+    }
+
+    public function getDetail(Request $request) {
+        // dd($request->id);
+        $detail = ProductModel::findOrFail($request->id);
+
+        $categories = CategoryController::getAllCategory();
+
+        $products = ProductController::getAllProduct();
+
+        return view('detail', ['categories'=>$categories, 'detail'=>$detail, 'products'=>$products]);
     }
 
     public function delete(Request $Request) {
