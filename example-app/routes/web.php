@@ -23,3 +23,16 @@ Route::get('/', function () {
 Route::get('/home',[ProductController::class,'getAllProductAndPagination']);
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
+
+
+//Product crud
+Route::get('/manageproduct', [ProductController::class ,'getAllProduct'])->name('manage-product');
+//Goi trang addproduct
+Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
+//Them product
+Route::post('/add-product', [ProductController::class, 'customProduct'])->name('product-add');
+//Hien thong tin san pham tai edit product
+Route::get('/editproduct', [ProductController::class, 'getProductById'])->name('edit-product');
+Route::post('/editproduct', [ProductController::class, 'getUpdateProductById'])->name('update');
+//Xoa san pham
+Route::DELETE('/manageproduct', [ProductController::class, 'delete'])->name('delete-product');
