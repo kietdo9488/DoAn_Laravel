@@ -148,9 +148,9 @@ class ProductController extends Controller
 
         $categories = CategoryController::getAllCategory();
 
-        $products = ProductController::getAllProduct();
+        // $products = ProductController::getAllProduct();
 
-        return view('detail', ['categories'=>$categories, 'detail'=>$detail, 'products'=>$products]);
+        return view('detail', ['categories'=>$categories, 'detail'=>$detail]);
     }
 
     public function delete(Request $Request) {
