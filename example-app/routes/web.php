@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[ProductController::class,'getAllProductAndPagination'])->name('home');
+
 Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->name('home');
 Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
@@ -38,5 +37,21 @@ Route::post('/editproduct', [ProductController::class, 'getUpdateProductById'])-
 //Xoa san pham
 Route::DELETE('/manageproduct', [ProductController::class, 'delete'])->name('delete-product');
 
+
+//Category crud
+Route::get('/managecategory', [CategoryController::class ,'getAllCate'])->name('manage-category');
+//Goi trang addproduct
+Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
+//Them product
+Route::post('/add-category', [CategoryController::class, 'customCategory'])->name('category-add');
+//Hien thong tin san pham tai edit product
+Route::get('/editcategory', [CategoryController::class, 'getCategoryById'])->name('edit-category');
+Route::post('/editcategory', [CategoryController::class, 'getUpdateCategoryById'])->name('update-category');
+//Xoa san pham
+Route::DELETE('/managecategory', [CategoryController::class, 'delete'])->name('delete-category');
+
+
+
+//
 
 Route::get('/detail', [ProductController::class, 'getDetail'])->name('detail-product');

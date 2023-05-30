@@ -145,12 +145,19 @@ class ProductController extends Controller
     public function getDetail(Request $request) {
         // dd($request->id);
         $detail = ProductModel::findOrFail($request->id);
-
+        $view = $detail->product_view;
+        ProductModel::where('id', '=', $request->id)->update(
+        [
+            'product_view' => $view+=1
+        ]); 
+        
+        
+        // dd($view += 1);
         $categories = CategoryController::getAllCategory();
 
-        $products = ProductController::getAllProduct();
+        // $products = ProductController::getAllProduct();
 
-        return view('detail', ['categories'=>$categories, 'detail'=>$detail, 'products'=>$products]);
+        return view('detail', ['categories'=>$categories, 'detail'=>$detail]);
     }
 
     public function delete(Request $Request) {

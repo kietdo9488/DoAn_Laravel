@@ -50,7 +50,7 @@
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="{{route('manage-category')}}">
               <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Category</span>
             </a>
@@ -78,36 +78,26 @@
 		</nav>
 
 		<div class="main">
-			<button class="btn btn-info"><a href="{{route('add-product')}}">Add product</a> </button>
+			<button class="btn btn-info"><a href="{{route('add-category')}}">Add category</a> </button>
 			<br>
 			<br>
 			<table class="table">
 				<thead>
 				  <tr>
 					<th scope="col">Id</th>
-					<th scope="col">Image</th>
 					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">Price</th>
-					<th scope="col">Category(ID)</th>
 					<th scope="col">Action</th>
 				  </tr>
 				</thead>
 				<tbody class="table-group-divider">
-				@foreach($productList as $item)
+				@foreach($categoryList as $item)
 				  <tr>
 					<th>{{ $item['id']}}</th>
-					<td>
-						<img src="img/{{$item['product_photo']}}" style="width: 100px; height: 100px;" alt="">
-					</td>
-					<td>{{ $item['product_name']}}</td>
-					<td class="descr">{{ $item['product_description']}}</td>
-					<td>{{ $item['product_price']}}</td>
-					<td>{{ $item['idcategory']}}</td>
+					<td>{{ $item['category_name']}}</td>
 					<td>
 						{{-- Chuyen toi trang edit product --}}
-						<a href="{{route('edit-product', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
-						<form method="POST" action="{{route('delete-product', ['id'=>$item->id])}}" onsubmit="return ConfirmDelete( this )">
+						<a href="{{route('edit-category', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
+						<form method="POST" action="{{route('delete-category', ['id'=>$item->id])}}" onsubmit="return ConfirmDelete( this )">
 							@method('DELETE')
 							@csrf
 							<button type="submit" class="btn btn-danger">Delete</button>
@@ -118,9 +108,8 @@
 				</tbody>
 			  </table>
 			  <div class="paginate" style="">
-				{{ $productList->links('pagination::bootstrap-5') }}
+				{{ $categoryList->links('pagination::bootstrap-5') }}
 			  </div>
-			  
 		</div>
 
 	</div>
