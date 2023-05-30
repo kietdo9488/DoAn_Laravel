@@ -53,7 +53,7 @@ Route::post('/editcategory', [CategoryController::class, 'getUpdateCategoryById'
 //Xoa san pham
 Route::DELETE('/managecategory', [CategoryController::class, 'delete'])->name('delete-category');
 //
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('home', [CustomAuthController::class, 'dashboard']);
 //Dang nhap
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');

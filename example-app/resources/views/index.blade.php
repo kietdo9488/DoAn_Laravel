@@ -34,6 +34,8 @@
                     </div>
                 </tr>
             @endforeach
-            {{ $products->links('pagination::bootstrap-5') }}
+                <div class="con" style="padding-left:47%;">{{ $products->links('pagination::bootstrap-4') }}
+                </div>
+            
     <!-- Products End -->
 @endsection
