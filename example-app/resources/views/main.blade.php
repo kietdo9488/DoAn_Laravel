@@ -137,8 +137,8 @@
                             <a href="{{route('manage-product')}}" class="nav-item nav-link">Manage</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+                            <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
+                            <a href="{{ route('register-user') }}" class="nav-item nav-link">Register</a>
                         </div>
                     </div>
                 </nav>
