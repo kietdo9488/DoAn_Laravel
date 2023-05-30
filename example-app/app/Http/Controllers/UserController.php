@@ -11,4 +11,19 @@ class UserController extends Controller
     {
         return UserModel::all();
     }
+
+    public function goToLogin(Request $request)
+    {
+
+
+        return view('auth.login');
+
+    }
+    public function goToRegister(Request $request)
+    {
+
+
+        return view('auth.registration');
+
+    }
 }

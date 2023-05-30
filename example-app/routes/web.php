@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->nam
 Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
+// Route::get('/login',[UserController::class,'goToLogin'])->name('login');
+
 
 
 //Product crud
@@ -49,7 +52,16 @@ Route::get('/editcategory', [CategoryController::class, 'getCategoryById'])->nam
 Route::post('/editcategory', [CategoryController::class, 'getUpdateCategoryById'])->name('update-category');
 //Xoa san pham
 Route::DELETE('/managecategory', [CategoryController::class, 'delete'])->name('delete-category');
-
+//
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+//Dang nhap
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+//Dang ki
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+//Dang xuat
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 
 //
