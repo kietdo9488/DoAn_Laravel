@@ -8,7 +8,7 @@
         </div>
         <div class="row px-xl-5 pb-3">
 
-            @foreach ($products as $product)
+            @foreach ($productList as $product)
                 <tr>
                     <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                         <div class="card product-item border-0 mb-4">
@@ -26,7 +26,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <p class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>{{$product->product_view}}</p>
+                                <a href="" class="btn btn-sm text-dark p-0"><i
+                                        class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 <a href="" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
@@ -34,6 +35,5 @@
                     </div>
                 </tr>
             @endforeach
-            {{ $products->links('pagination::bootstrap-5') }}
     <!-- Products End -->
 @endsection
