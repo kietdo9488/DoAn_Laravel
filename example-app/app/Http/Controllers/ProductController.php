@@ -179,4 +179,13 @@ class ProductController extends Controller
 
         return view('category', ['productList'=>$productList, 'categories'=>$categories]);
     }
+
+    public function cart()
+    {
+
+        $categories = CategoryController::getAllCategory();
+
+
+        return view('cart', ['categories'=>$categories]);
+    }
 }

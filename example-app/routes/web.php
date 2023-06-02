@@ -23,6 +23,8 @@ Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->nam
 Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
+Route::get('/cart',[ProductController::class,'cart'])->name('cart');
+
 
 
 //Product crud
