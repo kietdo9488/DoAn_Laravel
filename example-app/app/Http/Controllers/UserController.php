@@ -12,13 +12,6 @@ class UserController extends Controller
         return UserModel::all();
     }
 
-    public static function getAllUser2()
-    {
-        $users = UserModel::all();
-
-        return view('main', ['users'=>$users]);
-    }
-
     public function getAllUse(Request $request)
     {
         $userList = UserModel::paginate(5);
@@ -30,9 +23,12 @@ class UserController extends Controller
     //Them nguoi dung
     public function create(array $data)
     {
-        // dd($data);
+
+
         $user = new UserModel();
-        $user->user_name = $data['username'];
+        $user->username = $data['username'];
+        $user->email = $data['email'];
+        $user->password = $data['password'];
         $user->save();
     }
 
@@ -42,36 +38,42 @@ class UserController extends Controller
     {
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("manageuser")->withSuccess('Add cuccessfully');
+        return redirect("userManager")->withSuccess('Add cuccessfully');
     }
 
 
     //lay id nguoi dung de edit
-    public function getUserById(Request $request) {
+    public function getUserById(Request $request)
+    {
         // dd($request->id);
         $users = UserModel::findOrFail($request->id);
-        return view('edituser')->with('users', $users);
+        return view('edituser', ['users' => $users]);
     }
 
 
-    public function getUpdateUserById(Request $Request) {
-        UserModel::where('id', '=', $Request->id)->update(
-                [
-                    'username' => $Request->username,
-                    'password' => $Request->password,
-                ]
-            );
-
-        return redirect('manageruser')->withSuccess('Login details are not valid');
-    }
-
-    public function delete(Request $Request) {
-        UserModel::where('id', '=', $Request->id)->delete();
-        return redirect("manageruser");
-    }
-
-    public function addCategory()
+    public function getUpdateUserById(Request $Request)
     {
-        return view('adduser');
+        $user_name = 'user_name';
+        UserModel::where('id', '=', $Request->id)->update(
+            [
+                'username' => $Request->$user_name,
+                'email' => $Request->user_email,
+                'password' => $Request->user_password,
+            ]
+        );
+
+        return redirect('userManager')->withSuccess('Login details are not valid');
+    }
+
+
+    public function delete(Request $Request)
+    {
+        UserModel::where('id', '=', $Request->id)->delete();
+        return redirect("userManager");
+    }
+
+    public function addUser()
+    {
+        return view('addUser');
     }
 }
