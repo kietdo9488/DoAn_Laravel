@@ -6,6 +6,7 @@ use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/',[ProductController::class,'getAllProductAndPagination'])->name('h
 
 Route::get('/home',[ProductController::class,'getAllProductAndPagination'])->name('home');
 Route::get('/category',[ProductController::class,'getProductByCategory'])->name('category');
+Route::get('/user',[ProductController::class,'getProductByCategory'])->name('user');
 Route::get('/main',[CategoryController::class,'getAllCategory2']);
 Route::get('/search',[ProductController::class,'searchByKeywords'])->name('search');
 // Route::get('/login',[UserController::class,'goToLogin'])->name('login');
@@ -40,6 +42,17 @@ Route::post('/editproduct', [ProductController::class, 'getUpdateProductById'])-
 //Xoa san pham
 Route::DELETE('/manageproduct', [ProductController::class, 'delete'])->name('delete-product');
 
+//user 
+Route::get('/userManager', [UserController::class ,'getAllUse'])->name('manage-user');
+//Goi trang adduser
+Route::get('/add-user', [UserController::class, 'adduser'])->name('add-user');
+//Them user
+Route::post('/add-user', [UserController::class, 'customUser'])->name('user-add');
+//Hien thong tin nguoi dung de edit
+Route::get('/edituser', [UserController::class, 'getUserById'])->name('edit-user');
+Route::post('/edituser', [UserController::class, 'getUpdateUserById'])->name('update-user');
+//Xoa nguoi dung
+Route::DELETE('/manageruser', [CategoryController::class, 'delete'])->name('delete-user');
 
 //Category crud
 Route::get('/managecategory', [CategoryController::class ,'getAllCate'])->name('manage-category');
@@ -53,7 +66,7 @@ Route::post('/editcategory', [CategoryController::class, 'getUpdateCategoryById'
 //Xoa san pham
 Route::DELETE('/managecategory', [CategoryController::class, 'delete'])->name('delete-category');
 //
-Route::get('home', [CustomAuthController::class, 'dashboard']);
+Route::get('dasboard', [CustomAuthController::class, 'dashboard']);
 //Dang nhap
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
