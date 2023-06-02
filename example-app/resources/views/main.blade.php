@@ -78,7 +78,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="{{route('cart')}}" class="btn border">
+                <a href="" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                 </a>
             </div>
