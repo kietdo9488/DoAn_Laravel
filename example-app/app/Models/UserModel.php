@@ -11,4 +11,5 @@ class UserModel extends Model
     public $timestamp = false;
     protected $primaryKey = 'id';
     public $incrementing = true;
+
 }
