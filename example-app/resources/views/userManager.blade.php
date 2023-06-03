@@ -78,36 +78,29 @@
 		</nav>
 
 		<div class="main">
-			<button class="btn btn-info"><a href="{{route('add-product')}}">Add product</a> </button>
+			<button class="btn btn-info"><a href="{{route('add-user')}}">Add user</a> </button>
 			<br>
 			<br>
 			<table class="table">
 				<thead>
 				  <tr>
 					<th scope="col">Id</th>
-					<th scope="col">Image</th>
-					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">Price</th>
-					<th scope="col">Category(ID)</th>
-					<th scope="col">Action</th>
+					<th scope="col">username</th>
+					<th scope="col">email</th>
+					<th scope="col">password</th>
 				  </tr>
 				</thead>
 				<tbody class="table-group-divider">
-				@foreach($productList as $item)
+				@foreach($userList as $item)
 				  <tr>
 					<th>{{ $item['id']}}</th>
+					<td>{{ $item['username']}}</td>
+					<td>{{ $item['email']}}</td>
+					<td>{{ $item['password']}}</td>
 					<td>
-						<img src="img/{{$item['product_photo']}}" style="width: 100px; height: 100px;" alt="">
-					</td>
-					<td>{{ $item['product_name']}}</td>
-					<td class="descr">{{ $item['product_description']}}</td>
-					<td>{{ $item['product_price']}}</td>
-					<td>{{ $item['idcategory']}}</td>
-					<td>
-						{{-- Chuyen toi trang edit product --}}
-						<a href="{{route('edit-product', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
-						<form method="POST" action="{{route('delete-product', ['id'=>$item->id])}}" onsubmit="return ConfirmDelete( this )">
+						{{-- Chuyen toi trang edit user --}}
+						<a href="{{route('edit-user', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a	>
+						<form method="POST" action="{{route('delete-user', ['id'=>$item->id])}}" onsubmit="ret	urn ConfirmDelete( this )">
 							@method('DELETE')
 							@csrf
 							<button type="submit" class="btn btn-danger">Delete</button>
@@ -118,7 +111,7 @@
 				</tbody>
 			  </table>
 			  <div class="paginate" style="">
-				{{ $productList->links('pagination::bootstrap-5') }}
+				{{ $userList->links('pagination::bootstrap-5') }}
 			  </div>
 			  
 		</div>

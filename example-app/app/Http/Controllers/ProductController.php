@@ -179,4 +179,31 @@ class ProductController extends Controller
 
         return view('category', ['productList'=>$productList, 'categories'=>$categories]);
     }
+
+
+
+    //Add to cart
+    public function addToCart(Request $request) {
+        $product = ProductModel::findOrFail($request->id);
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$request->id])) {
+            $cart[$request->id]['quantity']++;
+        } 
+        else {
+            $cart[$request->id] = [
+                'product_name' => $product->product_name,
+                'product_description' =>$product->product_description,
+                'product_price' => $product->product_price,
+                'product_photo' =>$product->product_photo,
+                'quantity' => 1
+            ];
+        }
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Them san pham vao gio hang thanh cong!!!!');
+    }
+
+    public function cart() {
+        return view('cart');
+    }
 }

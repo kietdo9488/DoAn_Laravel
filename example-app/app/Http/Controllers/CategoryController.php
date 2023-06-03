@@ -33,6 +33,7 @@ class CategoryController extends Controller
         // dd($data);
         $category = new CategoryModel();
         $category->category_name = $data['category_name'];
+        dd($category->category_name);
         $category->save();
     }
 
