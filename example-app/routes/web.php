@@ -80,3 +80,5 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 //
 
 Route::get('/detail', [ProductController::class, 'getDetail'])->name('detail-product');
+Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('/add-to-cart', [ProductController::class, 'addToCart'])->name('add_to_cart');
