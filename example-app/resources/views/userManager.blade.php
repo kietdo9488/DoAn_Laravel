@@ -86,6 +86,7 @@
 				  <tr>
 					<th scope="col">Id</th>
 					<th scope="col">username</th>
+					<th scope="col">email</th>
 					<th scope="col">password</th>
 				  </tr>
 				</thead>
@@ -94,11 +95,12 @@
 				  <tr>
 					<th>{{ $item['id']}}</th>
 					<td>{{ $item['username']}}</td>
+					<td>{{ $item['email']}}</td>
 					<td>{{ $item['password']}}</td>
 					<td>
 						{{-- Chuyen toi trang edit user --}}
-						<a href="{{route('edit-user', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
-						<form method="POST" action="{{route('delete-user', ['id'=>$item->id])}}" onsubmit="return ConfirmDelete( this )">
+						<a href="{{route('edit-user', ['id'=>$item->id])}}" class="btn btn-primary">Edit</a	>
+						<form method="POST" action="{{route('delete-user', ['id'=>$item->id])}}" onsubmit="ret	urn ConfirmDelete( this )">
 							@method('DELETE')
 							@csrf
 							<button type="submit" class="btn btn-danger">Delete</button>

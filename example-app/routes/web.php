@@ -45,14 +45,14 @@ Route::DELETE('/manageproduct', [ProductController::class, 'delete'])->name('del
 //user 
 Route::get('/userManager', [UserController::class ,'getAllUse'])->name('manage-user');
 //Goi trang adduser
-Route::get('/add-user', [UserController::class, 'adduser'])->name('add-user');
+Route::get('/add-user', [UserController::class, 'addUser'])->name('add-user');
 //Them user
 Route::post('/add-user', [UserController::class, 'customUser'])->name('user-add');
 //Hien thong tin nguoi dung de edit
 Route::get('/edituser', [UserController::class, 'getUserById'])->name('edit-user');
 Route::post('/edituser', [UserController::class, 'getUpdateUserById'])->name('update-user');
 //Xoa nguoi dung
-Route::DELETE('/manageruser', [CategoryController::class, 'delete'])->name('delete-user');
+Route::DELETE('/userManager', [UserController::class, 'delete'])->name('delete-user');
 
 //Category crud
 Route::get('/managecategory', [CategoryController::class ,'getAllCate'])->name('manage-category');
@@ -80,3 +80,5 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 //
 
 Route::get('/detail', [ProductController::class, 'getDetail'])->name('detail-product');
+Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('/add-to-cart', [ProductController::class, 'addToCart'])->name('add_to_cart');
