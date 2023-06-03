@@ -26,7 +26,7 @@ class UserController extends Controller
 
 
         $user = new UserModel();
-        $user->username = $data['username'];
+        $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = $data['password'];
         $user->save();
@@ -53,12 +53,12 @@ class UserController extends Controller
 
     public function getUpdateUserById(Request $Request)
     {
-        $user_name = 'user_name';
+        $username = 'username';
         UserModel::where('id', '=', $Request->id)->update(
             [
-                'username' => $Request->$user_name,
-                'email' => $Request->user_email,
-                'password' => $Request->user_password,
+                'name' => $Request->$username,
+                'email' => $Request->email,
+                'password' => $Request->password,
             ]
         );
 
