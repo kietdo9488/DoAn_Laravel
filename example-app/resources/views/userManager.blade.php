@@ -94,7 +94,7 @@
 				@foreach($userList as $item)
 				  <tr>
 					<th>{{ $item['id']}}</th>
-					<td>{{ $item['username']}}</td>
+					<td>{{ $item['name']}}</td>
 					<td>{{ $item['email']}}</td>
 					<td>{{ $item['password']}}</td>
 					<td>
